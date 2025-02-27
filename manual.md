@@ -171,10 +171,8 @@ A avaliação dos projetos de software considerará os seguintes critérios:
 *   [ROS2 Documentation](https://docs.ros.org/en/): Documentação oficial ROS2.
 *   [PX4 Documentation](https://docs.px4.io/): Documentação PX4.
 *   [OpenCV Documentation](https://docs.opencv.org/master/): Documentação oficial OpenCV.
-*   [Streamlit Documentation](https://docs.streamlit.io/): Documentação Streamlit (para interface web opcional).
-*   [python-statemachine (GitHub)](https://github.com/fgmacedo/python-statemachine)
-*   [py\_trees (GitHub)](https://github.com/splintered-reality/py_trees)
-
+*   [QGroundControl](http://qgroundcontrol.com/): Interface gráfica para controle de drones PX4.
+*   [Gazebo](http://gazebosim.org/): Simulador de robótica 3D.
 ---
 
-**Boa sorte com o seu projeto!** Em caso de dúvidas, entre em contato com a equipe de software.
+**Boa sorte com o seu projeto!** Em caso de dúvidas não hesite em entrar em contato com algum líder de Controle e Sistemas Embarcados.
