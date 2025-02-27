@@ -1,8 +1,8 @@
 # 🛠️ Manual do Projeto Prático de Software - Trainee EDRA 2025.1
 
-## Bem-vindo(a) ao Projeto Prático de Software!
+## Bem-vindo(a) ao Projeto Prático de Controle e Sistemas Embarcados!
 
-Este manual detalha as opções de projeto para a área de software do processo trainee da equipe EDRA. Escolha **uma** das opções abaixo e siga as instruções para desenvolver seu projeto.
+Este manual detalha as opções de projeto para a área de Controle e Sistemas Embarcados do processo trainee da EDRA. Escolha **uma** das opções abaixo e siga as instruções para desenvolver seu projeto.
 
 ## Opções de Projeto Detalhadas
 
