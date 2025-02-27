@@ -119,44 +119,52 @@ Este manual detalha as opções de projeto para a área de Controle e Sistemas E
 
 **Objetivo:** Desenvolver um sistema de planejamento de missão para um drone, utilizando Máquina de Estados Finita (FSM) ou Árvore de Comportamento (Behavior Tree - BT) para lógica de decisão e controle. O projeto foca na implementação da lógica de planejamento e na justificativa das escolhas de design, sem a necessidade de simulação em Gazebo (testes automatizados opcionais).
 
+**Descrição da missão:** O drone deve seguir uma linha predefinida até uma base de pouso identificada por um padrão específico (e.g., cor, forma, código visual). A missão consiste em decolar, seguir a linha, detectar um QR code (com um valor não conhecido previamente mas restrito às opções) no fim da linha, detectar a base correta para o pouso (a que seja correspondente ao identificador passado pelo QR code dentre outras bases com outros identificadores) e pousar nela de forma segura. O QR code poderá conter o código  "1", "2", "3" ou "4", as bases poderão estar na posição "A", "B", "C" ou "D", as posições são conhecidas previamente mas o número correspondente à base localizada não, e a base correta para o pouso será a que tiver o mesmo código numérico que o QR code detectado. O sistema de planejamento deve lidar com diferentes situações como: desalinhamento com a linha (mas não a perda completa dela do campo de visão nem a perda da informação do sentido a seguir na linha), falha ao ler o QR code daquela posição (que pode não acontecer em uma outra tentativa de leitura) e deve tomar decisões baseadas em eventos e condições, o sistema de planejamento não deve ter que lidar com questões como: malhas de controle de baixo nível responsáveis pela estabilidade e afins, implementação de algorítimos e funcionalidades (como visão computacional e geração de trajetórias), deve-se fazer os nós folhas ou condições de transições conceituais, sem necessidade de serem funcionais.
+
 **📚 Materiais de Estudo:**
 
 *   **Máquinas de Estados e Árvores de Comportamento:**
-    *   [python-statemachine (GitHub)](https://github.com/fgmacedo/python-statemachine): Biblioteca Python para Máquinas de Estados Finitas.
-    *   [py\_trees (GitHub)](https://github.com/splintered-reality/py_trees): Biblioteca Python para Árvores de Comportamento.
-    *   [Artigo sobre Máquinas de Estados em Robótica](pesquisar no Google por "state machine robotics tutorial")
-    *   [Artigo sobre Árvores de Comportamento em Robótica](pesquisar no Google por "behavior tree robotics tutorial")
+    *  **Bibliotecas com Implementações:**
+        *   [python-statemachine](https://python-statemachine.readthedocs.io): Biblioteca Python para Máquinas de Estados Finitas.
+            *   [Exemplos na documentação](https://python-statemachine.readthedocs.io/en/latest/auto_examples/index.html): Clique nos exemplos para ver o código e detalhes.
+            *   [Github da biblioteca](https://dev.to/andrewbaisden/creating-a-state-machine-in-python-to-control-a-robot-1k5l): Tem um exemplo e explicação de como gerar o gráfico da máquina de estados. Mas é preferível usar o PIP para instalar a clonar o repositório
+        *   [py\_trees](https://py-trees.readthedocs.io/en/devel/introduction.html): Biblioteca Python para Árvores de Comportamento.
+            *   [Tutoriais na documentação](https://py-trees-ros-tutorials.readthedocs.io/en/stable/tutorials.html): Passo à passo da implementação de alguns exemplos.
+        *   [BehaviourTree.cpp](https://www.behaviortree.dev/docs/intro): Biblioteca C++ para Árvores de Comportamento, apesar de não ser em Python é uma biblioteca com boas explicações na documentação e com 2 versões de uma excelente ferramenta para desenvolver as árvores de comportamento com uma interface gráfica, fazendo com que seja possível cumprir os requisitos do trabalho com muito pouco ou quase nenhum conhecimento de C++. É uma documentação interessante para a leitura mesmo se for usar outra implementação, traz boas explicações dos conceitos básicos das Árvores de Comportamento.
+            *   [Tutoriais na documentação](https://www.behaviortree.dev/docs/category/tutorials-basic): Clique nos exemplos para ver o código e detalhes.
+            *   [Github do Groot Open Source](https://github.com/BehaviorTree/Groot): Interface gráfica para criação de árvores de comportamento, mais antiga mas de código aberto e sem recursos pagos.
+            *   [Groot2](https://www.behaviortree.dev/groot): Uma interfaçe gráfica mais moderna e com mais recursos, tem todos os recursos necessários para completar a atividade na sua versão gratuita mas também possiu uma versão paga.
+    
+    *   **Artigos e Tutoriais:**
+        *   [Artigo sobre Árvores de Comportamento em Robótica](https://roboticseabass.com/2021/05/08/introduction-to-behavior-trees/): O artigo traz, para um escopo intrudutório, um boa explicação do funcionamento e da implementação de uma árvore de comportamento, além de comparar as duas principais implementações `py_trees` e`BehaviorTree.cpp` e uma breve comparação com o uso de Máquinas de Estados Finitos
+  
 *   **Conceitos Fundamentais:**
     *   **Máquinas de Estados Finitas (FSM):**  Entender o conceito de estados, transições e eventos em FSMs, e como modelar o comportamento de um sistema usando FSMs.
     *   **Árvores de Comportamento (BT):**  Entender a estrutura hierárquica de BTs, nós de controle (sequência, seletor), nós de ação e nós de condição, e como usar BTs para planejamento de comportamento complexo.
-    *   **Planejamento de Missão:**  Conceituação de missões autônomas, etapas de uma missão típica de drone (decolagem, navegação, pouso), e lógica de decisão para lidar com diferentes situações e eventos durante a missão.
+    *   **Planejamento de Missão:**  Conceituação de missões autônomas, etapas e estratégias de uma missão típica de drone (decolagem, navegação, pouso), e lógica de decisão para lidar com diferentes situações e eventos durante a missão.
 
 **🎯 Requisitos Funcionais:**
 
 *   **Requisitos Obrigatórios:**
-    1.  **Implementação de FSM ou BT:** Escolher e implementar um sistema de planejamento de missão usando Máquina de Estados Finita (com `python-statemachine`) **ou** Árvore de Comportamento (com `py_trees`).
-    2.  **Missão Seguidor de Linha:** A missão a ser planejada deve ser um "seguidor de linha" que leve o drone de um ponto inicial até uma localização de pouso em uma base específica. A base de pouso será identificada por um identificador predefinido (dentre outras bases possíveis).
-    3.  **Justificativa de Escolhas:** Documentar e justificar as escolhas de design e implementação do sistema de planejamento (FSM ou BT), incluindo a estrutura de estados/nós, as transições/fluxo de controle, e o tratamento de eventos e condições.
-    4.  **Testes em Ambiente Simulado (Texto/Console):**  Desenvolver um ambiente de teste simulado em texto/console para demonstrar o funcionamento da lógica de planejamento. O simulador deve permitir simular o progresso da missão, a detecção da linha, a identificação da base e o pouso.
+    1.  **Implementação de FSM ou BT:** Escolher e implementar um sistema de planejamento de missão usando Máquina de Estados Finita (com `python-statemachine`) **ou** Árvore de Comportamento (com `py_trees` ou `BehaviorTree.cpp`).
+    2.  **Representação Visual da Implementação:** Obter um desenho esquemático da estrutura de decisão (FSM ou BT) que a biblioteca de escolha gere com a estrutura pronta que explique a missão (é interessante fazer algum esquemático, à mão ou não durante a implementação do sistema de planejamento projetado mas o que é pedido aqui é o que alguma ferramenta de vizualização da biblioteca ou externa que se associe à ela gere a partir do código).
+    3.  **Execução em Ambiente Simulado (Texto/Console):**  Usar as ferramentas da biblioteca para mostrar no terminal a execução do caminho desenvolvido pelo sistema de planejamento projetado, pode-se usar a parte visual em tempo real nativa do Groot2 se estiver usando-o, se não demonstre com os prints no terminal que a biblioteca de escolha implemente.
 
 *   **Requisitos Opcionais (Escolher pelo menos 2):**
-    1.  **Reação a Eventos Simulados:** Expandir o sistema de planejamento para reagir a eventos simulados (e.g., perda da linha, obstáculos, vento simulado), alterando o comportamento do drone (e.g., busca pela linha, desvio de obstáculo, espera por melhores condições).
-    2.  **Planejamento de Rota Básico (em FSM/BT):** Integrar um algoritmo simples de planejamento de rota (e.g., linha reta, busca em espiral) dentro da FSM ou BT para gerar a trajetória do seguidor de linha dinamicamente.
-    3.  **Testes Automatizados (Cadeia de Markov - Opcional Avançado):** Implementar um sistema de testes automatizados utilizando um modelo de Cadeia de Markov para avaliar a robustez e eficiência do sistema de planejamento em diferentes cenários simulados (e.g., variações no ambiente, falhas de detecção).
-    4.  **Visualização da FSM/BT:** Criar uma representação visual da Máquina de Estados ou Árvore de Comportamento (e.g., diagrama gerado automaticamente pela biblioteca ou desenhado manualmente) para facilitar a compreensão da lógica de planejamento.
-    5.  **Interface de Monitoramento (Terminal/Texto):**  Melhorar a interface de teste em texto/console para monitorar o estado atual da FSM/BT, eventos, transições e outras informações relevantes durante a simulação.
+    1.  **Simulação de Cenários Diversos:** Desenvolver um ambiente de teste simulado em texto/console para demonstrar o funcionamento da lógica de planejamento a partir da interação com o usuário (pelo terminal mesmo) para a mudança de um estado para algum dos outros possíveis a cada transição ou finalização, ou não, de um comportamento num dado tick. Na demonstração desse requisito deve-se mostrar a execução de diferentes cenários simulados, inclusive os que não sigam o melhor caminho (e.g., desalinhamento com a linha, falha na leitura do QR code) e a possibilidade de se recuperar deles.
+    2.  **Testes Automatizados (Cadeia de Markov - Opcional Avançado):** Implementar um sistema de testes automatizados utilizando um modelo de Cadeia de Markov (sistema estocástico) para avaliar a robustez e eficiência do sistema de planejamento em diferentes cenários simulados (e.g., variações no ambiente, falhas de detecção). Esse simulador deve permitir simular os diferentes resultados (tempo para completar, quantidade de tentativas etc) do progresso da missão com diferentes condições (sequência seguida) para completar a missão.
+    3. **Justificativa de Escolhas:** Documentar e justificar as escolhas de design e implementação do sistema de planejamento (FSM ou BT), incluindo a estrutura de estados/nós, as transições/fluxo de controle, e o tratamento de eventos e condições.
+
 
 **✅ Checklist de Desenvolvimento:**
 
-*   [ ] Estudar o conceito de Máquinas de Estados Finitas ou Árvores de Comportamento e as bibliotecas Python correspondentes.
+*   [ ] Estudar o conceito de Máquinas de Estados Finitas ou Árvores de Comportamento e as bibliotecas correspondentes.
 *   [ ] Projetar a arquitetura do sistema de planejamento (FSM ou BT) para a missão seguidor de linha.
-*   [ ] Implementar a FSM ou BT em Python, utilizando a biblioteca escolhida.
-*   [ ] Desenvolver um ambiente de teste simulado em texto/console.
-*   [ ] Testar o sistema de planejamento no ambiente simulado.
+*   [ ] Implementar a FSM ou BT em Python ou C++, utilizando a biblioteca escolhida.
 *   [ ] Documentar as escolhas de design, a implementação e os testes.
 *   [ ] Implementar pelo menos dois requisitos opcionais.
 *   [ ] Preparar a apresentação, focando na explicação da lógica de planejamento e justificativas.
-
+*   [ ] Criar a documentação/relatório do projeto em forma de README.
 ---
 
 ## 🎯 Avaliação Geral dos Projetos
@@ -165,8 +173,8 @@ A avaliação dos projetos de software considerará os seguintes critérios:
 
 1.  **Funcionalidade e Cumprimento dos Requisitos:** O projeto atende aos requisitos obrigatórios e opcionais escolhidos? Funciona conforme o esperado?
 2.  **Qualidade do Código:** O código é bem organizado, legível, comentado e segue boas práticas de programação (quando aplicável à linguagem)?
-3.  **Documentação e Explicação Técnica:** A documentação (código e relatórios concisos, quando aplicável) é clara e suficiente para entender o projeto? O candidato demonstra compreensão técnica do projeto durante a apresentação e consegue responder a dúvidas?
-4.  **Criatividade e Iniciativa (Requisitos Opcionais):** A escolha e implementação dos requisitos opcionais demonstram iniciativa e exploração além do básico?
+3.  **Documentação e Explicação Técnica:** A documentação (comentários/docstrings no código e o README) é clara e suficiente para entender o projeto? A documentação explica adequadamente a implementação e a função de cada parte do código? As instruções no README são suficientes para saber quais são os requisitos, dependências e processos para instalar o que for necessário e rodar o código? O candidato demonstra compreensão técnica do projeto durante a apresentação e consegue responder a dúvidas?
+4.  **Criatividade e Iniciativa (Requisitos Opcionais):** A escolha e implementação dos requisitos opcionais demonstram iniciativa e interesse em expandir o conhecimento sobre a tarefa mas ainda conhecendo as próprias limitações técnicas?
 5.  **Justificativa de Design (Opção 3):** Para a Opção 3, a justificativa das escolhas de design da Máquina de Estados ou Árvore de Comportamento é clara, lógica e bem fundamentada?
 
 ## 🗂️ Recursos e Referências Adicionais
