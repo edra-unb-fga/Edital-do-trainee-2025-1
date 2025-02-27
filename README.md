@@ -8,8 +8,8 @@ Esse repositório será usado para detalhar os requisitos e formato do projeto p
 
 Escolherão **uma** das seguintes opções:
 
-1.  **Visão Computacional:** Detecte formas geométricas coloridas em imagens/vídeos usando OpenCV.
-2.  **Simulação ROS2/PX4:** Implemente missões de navegação autônoma em simulação.
+1.  **Visão Computacional:** Detecte formas geométricas específicas coloridas em imagens/vídeos usando OpenCV.
+2.  **Simulação ROS2/PX4:** Implemente uma navegação simples em simulação.
 3.  **Planejamento de Missão:** Desenvolva um sistema de planejamento de missão para drones (Máquina de Estados ou Árvore de Comportamento).
 
 ## Documentação
