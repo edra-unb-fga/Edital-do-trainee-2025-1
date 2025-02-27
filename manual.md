@@ -75,13 +75,15 @@ Este manual detalha as opções de projeto para a área de Controle e Sistemas E
 **📚 Materiais de Estudo:**
 
 *   **Docker e PX4:**
-    *   [Documentação Docker da PX4](https://docs.px4.io/main/en/test_and_ci/docker.html#px4-docker-containers)
-    *   [Playlist: Como iniciar e integrar o Docker da PX4](https://youtube.com/playlist?list=PL7a-3FhE-c6uZiyj6TvCFqZ2jU9ETwNpH&si=SnUcXjKjvrcK6vWn)
+    *   [Documentação Docker da PX4](https://docs.px4.io/main/en/test_and_ci/docker.html#px4-docker-containers) (Recomendado): Instruções para instalar e configurar o ambiente de simulação PX4 com Docker.
 *   **ROS2 e Integração PX4:**
-    *   [Documentação geral de ROS2 na PX4](https://docs.px4.io/main/en/ros2/)
-    *   [Interface de navegação com ROS2](https://docs.px4.io/main/en/ros2/px4_ros2_navigation_interface.html)
+    *   [Documentação geral de ROS2 na PX4](https://docs.px4.io/main/en/ros2/): Guia de integração ROS2 com PX4, incluindo navegação, offboard control e simulação, navegue dentro dos tópicos na barra lateral para encontrar informações relevantes
+    *   [Exemplo de navegação básica com ROS2 e PX4 em C++](https://docs.px4.io/main/en/ros2/offboard_control.html): Interessante ler as partes de setup e observar os links para outras partes da documentação da PX4 na página mesmo se for implementar em Python
+    *   [Exemplo de navegação básica com ROS2 e PX4 em Python](https://github.com/Jaeyoung-Lim/px4-offboard): Repositório que tem um exemplo que pode ser usado como base da implementação que vá fazer, inclui métodos e atributos que podem ser reutilizados da classe OffboardControl que extende Node
 *   **ROS2 Tutoriais Gerais:**
-    *   [ROS2 Tutorials](https://docs.ros.org/en/iron/Tutorials.html) (Focar em "Understanding ROS2 nodes", "Topics", "Services", "Actions", "Writing a simple publisher and subscriber", "Using parameters")
+    *   [ROS2 Tutorials](https://docs.ros.org/en/iron/Tutorials.html): Focar em "Understanding ROS2 nodes", "Topics", "Services", "Actions", "Writing a simple publisher and subscriber", "Using parameters"
+    *   [ROS2 Tutorial em vídeo da implementação de parâmetros para nós](https://www.youtube.com/watch?v=EQE6xTqJ1u8): Vídeo sobre um robô terrestre mas que explica bem como usar parâmetros em nós ROS2
+    *   [Tuturial em vídeo de ROS2 com PX4 em Python](https://www.youtube.com/watch?v=8gKIP0OqHdQ): Extende e explica o exemplo de navegação básica em Python, inclui dicas importantes e detalhes de instalação e setup do ambiente e de uso do Gazebo
 *   **Conceitos Fundamentais:**
     *   **ROS2 Nodes, Topics, Services, Actions, Parameters:** Compreender a arquitetura ROS2 e como os nós se comunicam usando tópicos, serviços e actions, e como configurar parâmetros em nós ROS2.
     *   **Simulação PX4/Gazebo:**  Familiarizar-se com o ambiente de simulação PX4 no Gazebo, incluindo a execução de simulações e a interação com o drone simulado.
@@ -90,27 +92,28 @@ Este manual detalha as opções de projeto para a área de Controle e Sistemas E
 **🎯 Requisitos Funcionais:**
 
 *   **Requisitos Obrigatórios:**
-    1.  **Simulação ROS2/PX4:** Configurar e executar a simulação de um drone no Gazebo utilizando Docker da PX4 e integração ROS2.
-    2.  **Missões Paramétricas:** Desenvolver um nó ROS2 em Python que permita criar missões de navegação autônoma básicas (decolar, voar para um ponto, pousar) configuráveis através de parâmetros ROS2 (e.g., destino, altura de voo, velocidade). Os parâmetros devem ser definidos no launch file ou via linha de comando.
-    3.  **Monitoramento via Terminal:**  Implementar a leitura e exibição de dados de telemetria do drone (posição X, Y, Z) em tempo real no terminal, utilizando `ros2 topic echo`.
+    1.  **Simulação ROS2/PX4:** Configurar e executar a simulação de um drone no Gazebo da PX4 integrada ao ROS2.
+    2.  **Missões Paramétricas:** Desenvolver um nó ROS2 em Python que permita criar missões de navegação autônoma básicas (decolar, voar para um ponto, pousar) configuráveis através de parâmetros ROS2 (e.g., destino, altura de voo, velocidade). Os parâmetros devem ser definidos no launch file, arquivos de configuração ou via linha de comando no momento da execução.
+    3.  **Monitoramento via Terminal:**  Ser capaz de ler e interpretar dados de telemetria do drone (posição X, Y, Z) exibidos no terminal em tempo real utilizando `ros2 topic echo`.
     4.  **Documentação da Missão:** Documentar os parâmetros configuráveis da missão, os tópicos ROS2 utilizados para monitoramento e os passos para executar e configurar a simulação.
 
 *   **Requisitos Opcionais (Escolher pelo menos 2):**
-    1.  **Tipos de Trajetória Parametrizáveis:**  Expandir as missões para incluir diferentes tipos de trajetória parametrizáveis (e.g., voo em círculo com raio e centro configuráveis, voo em linha reta com comprimento e direção configuráveis).
-    2.  **Variáveis de Controle Parametrizáveis:**  Permitir configurar parâmetros de controle da missão (e.g., velocidade máxima, taxa de subida/descida) via parâmetros ROS2.
-    3.  **Dashboard Web Básico (Streamlit):** Criar um dashboard web básico com Streamlit para visualizar os dados de telemetria do drone (posição, altura) de forma gráfica e interativa.
-    4.  **Serviço ROS2 para Configuração:** Criar um serviço ROS2 que permita configurar os parâmetros da missão dinamicamente (sem precisar reiniciar o nó ROS2).
+    1.  **Tipos de Trajetória Parametrizáveis:**  Expandir as missões para incluir diferentes tipos de trajetória parametrizáveis (e.g., voo em círculo com raio e centro configuráveis, voo em espiral ou em uma trajetória desenhando um 8, voo em zig-zag, voo para busca em quadrantes etc).
+    2.  **Variáveis de Controle Parametrizáveis:**  Permitir configurar parâmetros de controle da missão (e.g., velocidade, aceleração e ângulo máximos permitidos, taxa de subida/descida, valores de PID etc) via parâmetros ROS2.
+    3.  **Controle por teclas:** Implementar um controle manual do drone via teclado (e.g., decolagem, pouso, controle de posição) para testes e demonstração interativa.
+    4.  **Dashboard Web Básico:** Criar um dashboard web básico com algum framework da sua escolha para visualizar os dados de telemetria do drone (posição, altura, setpoint etc) de forma gráfica e interativa.
     5.  **Testes com Diferentes Parâmetros:**  Realizar testes da simulação com diferentes configurações de parâmetros e documentar os resultados e observações sobre o comportamento do drone.
 
 **✅ Checklist de Desenvolvimento:**
 
-*   [ ] Instalar Docker e configurar o ambiente PX4 com ROS2.
-*   [ ] Estudar a documentação de ROS2 e PX4, focando em parâmetros, navegação e simulação.
+*   [ ] Instalar Docker e configurar o ambiente com a imagem da PX4 com ROS2 ou instalar os requisitos diretamente na sua máquina.
+*   [ ] Estudar a documentação de ROS2 e PX4, focando em navegação, simulação e parâmetros.
 *   [ ] Criar um pacote ROS2 e um nó de controle em Python para missões paramétricas.
 *   [ ] Implementar missões básicas configuráveis por parâmetros no Gazebo.
 *   [ ] Monitorar dados de telemetria no terminal usando `ros2 topic echo`.
 *   [ ] Implementar pelo menos dois requisitos opcionais.
 *   [ ] Documentar o código, parâmetros e preparar a apresentação.
+*   [ ] Criar a documentação/relatório do projeto em forma de README.
 
 ### 3️⃣ Opção 3: Planejamento de Missão com Máquina de Estados ou Árvore de Comportamento
 
