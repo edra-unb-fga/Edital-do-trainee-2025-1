@@ -1,1 +1,7 @@
-/.vscode
+# Ignore VSCode settings folder
+.vscode/
+
+# Ignore log, aux, and out files (all locations)
+*.log
+*.aux
+*.out
