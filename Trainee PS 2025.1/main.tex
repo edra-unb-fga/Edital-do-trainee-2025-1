@@ -1,0 +1,52 @@
+\input{Fixos/preambulo.tex}
+
+\usepackage{blindtext}
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\textbf{\Huge Projeto Trainee 2025.1}\\[0.5cm]  %%% TÍTULO
+\textbf{\Large EDRA}\\[0.2cm]  %%% SUBTÍTULO (se necessário)
+\end{center}
+
+%%% autores na capa jogam imagem para baixo
+% \setlength{\hsize}{0.5\hsize}
+% \begin{flushleft}
+% \noindent \textbf{Autores:} \blindtext
+% \end{flushleft}
+% \setlength{\hsize}{2\hsize}
+
+
+\vspace{200pt}
+\includegraphics[width=120pt,right]{Fixos/imagens/Logo_EDRA - Atual.png}
+
+\par
+\vfill
+\begin{center}
+{{\normalsize Brasília,}\\
+{\normalsize \today.}}
+\end{center}
+\end{titlepage}
+
+%Sumário
+\newpage
+\renewcommand{\contentsname}{\centering Sumário}
+\tableofcontents
+%End Sumário
+
+\newpage
+\input{Editáveis/00intro}
+\newpage
+\input{Editáveis/05RelatorioGeral}
+\newpage
+\input{Editáveis/02C&SE}
+\newpage
+\input{Editáveis/03DesignAero}
+\newpage
+\input{Editáveis/01Eletronica}
+\newpage
+%\input{Editáveis/04Estrut}
+%\newpage
+\input{Editáveis/06referencias}
+
+\end{document}

@@ -1,0 +1,69 @@
+\section{Projeto Geral}
+
+O Projeto Geral consistirá em um drone quadrirrotor que deverá cumprir uma missão, assim como feito pela equipe em suas competições. O drone não será construído de fato, ele deve ser imaginado e simulado, para garantir o cumprimento de todas as etapas do projeto. A missão do Projeto Trainee EDRA 2025.1 é:
+
+\begin{itemize}
+    \item \textbf{Entrega Aérea de Suporte Humanitário com Reconhecimento de Base por QR Code}
+    
+    \textbf{Objetivo geral:} \\
+    Executar uma missão autônoma com um drone que decola de uma base inicial, realiza navegação guiada por visão computacional, identifica um ponto de apoio através de QR code e realiza a entrega de um suporte humanitário, pousando com segurança ao final da missão.
+    
+    \begin{itemize}
+        \item \textbf{Etapas detalhadas da missão:}
+        
+        \begin{enumerate}
+            \item \textbf{Posicionamento inicial:}
+            \begin{itemize}
+                \item O drone estará inicialmente pousado sobre uma pequena plataforma ou caixa elevada, que deve ser segurada manualmente ou fixada no local de partida.
+                \item O drone estará carregando um pacote representando suporte humanitário, que pode simbolizar água, medicamentos ou mantimentos.
+            \end{itemize}
+            
+            \item \textbf{Decolagem:}
+            \begin{itemize}
+                \item O drone deve realizar uma decolagem vertical estável e segura, atingindo uma altura pré-definida (ex: 1,5 metros) para iniciar a missão.
+            \end{itemize}
+            
+            \item \textbf{Navegação até o ponto de reconhecimento:}
+            \begin{itemize}
+                \item No chão haverá uma linha azul contínua, que servirá como rota visual de navegação.
+                \item O drone deve utilizar visão computacional para detectar e seguir essa linha até o final do trajeto.
+            \end{itemize}
+            
+            \item \textbf{Leitura do QR Code de missão:}
+            \begin{itemize}
+                \item Ao final da linha azul, haverá um QR code visível contendo um número de 1 a 3, que indica qual base deve receber o suporte humanitário.
+                \item O drone deve parar, ler o QR code, interpretar corretamente o número da base-alvo e armazenar essa informação para a próxima etapa.
+            \end{itemize}
+            
+            \item \textbf{Identificação das bases:}
+            \begin{itemize}
+                \item À frente do ponto de leitura estarão posicionadas três bases alinhadas, cada uma identificada com um QR code numerado de 1 a 3.
+                \item O drone deve identificar visualmente os QR codes das bases e se posicionar de forma precisa sobre a base cujo número corresponde ao do QR code lido anteriormente.
+            \end{itemize}
+            
+            \item \textbf{Entrega do suporte humanitário:}
+            \begin{itemize}
+                \item Estando posicionado sobre a base correta, o drone deve realizar a liberação controlada do pacote de suporte humanitário diretamente sobre o alvo.
+                \item A liberação deve ocorrer com o drone estabilizado e dentro da zona de entrega, simulando uma entrega precisa em um cenário de assistência real.
+            \end{itemize}
+            
+            \item \textbf{Pouso:}
+            \begin{itemize}
+                \item Após a entrega, o drone deve se deslocar até uma área de pouso segura, que pode ser o ponto inicial ou um local previamente definido.
+                \item O drone então realiza um pouso controlado e seguro, encerrando a missão.
+            \end{itemize}
+        \end{enumerate}
+        
+        \item \textbf{Objetivos avaliados na missão:} 
+        \begin{itemize}
+            \item Decolagem e pouso seguros e controlados
+            \item Navegação visual por linha de referência
+            \item Leitura e interpretação correta de QR codes
+            \item Posicionamento preciso sobre a base correta
+            \item Liberação eficaz da carga de suporte humanitário
+            \item Autonomia na execução da missão com base em dados extraídos durante o voo
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+Ademais, conforme dito na introdução, deverá ser produzido um relatório técnico final. Dessa forma é recomendável a leitura do livro Introduction to Multicopter Design and Control, de Quan Quan, além de outras fontes, citadas no final desse documento.
