@@ -1,14 +1,4 @@
 \babel@toc {portuges}{}\relax 
 \contentsline {section}{\numberline {1}Introdução}{2}{section.1}%
 \contentsline {section}{\numberline {2}Projeto Geral}{3}{section.2}%
-<<<<<<< HEAD
-\contentsline {section}{\numberline {3}Controle \& Sistemas Embarcados:}{5}{section.3}%
-\contentsline {section}{\numberline {4}Design Aeronáutico}{6}{section.4}%
-\contentsline {section}{\numberline {5}Eletrônica}{8}{section.5}%
-\contentsline {section}{\numberline {6}Referências}{11}{section.6}%
-=======
-\contentsline {section}{\numberline {3}Controle \& Sistemas Embarcados (C\&SE):}{5}{section.3}%
-\contentsline {section}{\numberline {4}Design Aeronáutico}{8}{section.4}%
-\contentsline {section}{\numberline {5}Eletrônica}{11}{section.5}%
-\contentsline {section}{\numberline {6}Referências}{14}{section.6}%
->>>>>>> 3b82816 (Edições gerais)
+\contentsline {subsection}{\numberline {2.1}Especificações Detalhadas do Ambiente e Elementos de Missão}{4}{subsection.2.1}%
