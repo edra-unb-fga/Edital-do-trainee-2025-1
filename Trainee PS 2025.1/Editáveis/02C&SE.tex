@@ -1,1 +1,57 @@
-\section{Controle \& Sistemas Embarcados:}
+\section{Controle \& Sistemas Embarcados (C\&SE):}
+
+A área de controle e sistemas embarcados é responsável por transformar o drone desenvolvido pela equipe em um sistema, de fato, autônomo, a área concentra a essencia das características robóticas ao possibilitar reatividade e tomada de decisões de acordo com o ambiente percebido. Somos responsáveis por compreender as características do sistema implentado pelas outras áreas e, com isso, configurar parâmetros de controle, codificar e projetar as soluções que permitam o sistema cumprir as missões de maneira autônoma, confiável e segura. Isso inclui o estudo de de soluções de visão computacional, estratégias de controle e de lógica computacional para execução confiável das missões, tal que tudo isso se junta e valida em simulações baseadas em física que testam a implementação codificada de maneira similar à que é feita no ambiente real.
+
+Além do projeto, codificação e testes das soluções autônomas a área de controle e sistemas embarcados é responsável pelo levantamento e comunicação dos requisitos de sistema para a implementação das soluções propostas. Para isso a área interage constantemente com as outras para conhecer as limitações impostas tanto pelo hardware e software disponíveis, quanto pelas soluções mecânicas e eletrônicas possíveis para um drone, buscando manter as soluções propostas viáveis para o nosso contexto de uma equipe de competição estudantil.
+
+\subsection*{Objetivo}
+
+Esta parte do projeto tem como objetivo introduzir os trainees na área de C\&SE a algumas das tecnologias utilizadas dentro da área, com destaque ao código usado para controlar o drone, às estratégias para estabelecer interações com o ambiente e às possíveis maneiras de obter e processar informações dele. O intuito desse projeto é que os candidatos tenham a oportunidade de conhecer e ganhar experiência com essas tecnologias essenciais para essa área na EDRA.
+
+\subsection*{Etapas do Projeto}
+
+Para a organização e melhor entendimento do projeto, as seguintes etapas devem ser seguidas:
+
+\subsubsection*{Etapa 1 – Pesquisa e implementação das partes separadas}
+
+Nesta etapa inicial, o foco é conhecer as tecnologias utilizadas na área de C\&SE e validar os conceitos da estratégia escolhida para a solução. É interessante conseguir, mesmo nessa etapa inicial, fazer os testes básicos, já com algum código, mesmo que em partes separadas, que indiquem se: a forma de perceber o ambiente, estratégia de controle e lógica de missão escolhidas são viáveis para solucionar a missão.
+
+\textbf{Partes da solução:}
+\begin{itemize}
+    \item Percepção do ambiente (Visão computacional e sensores)
+    \item Estratégia básica de controle (Como comandar velocidade, posição e orientação para o drone)
+    \item Lógica de missão (Partes da missão, estrutura do código e estratégias para executar a missão)
+\end{itemize}
+
+\subsubsection*{Etapa 2 – Implementação prática da solução e início de testes de integração}
+
+Com as partes separadas e preliminarmente testadas, o próximo passo é integrá-las e testar a solução como um todo, validando integração dos códigos de visão computacional com a lógica de missão e controle. Nessa etapa deve-se começar a conhecer o ambiente de simulações do Gazebo mas ainda será uma etapa principalmente para observar \textit{inputs} e \textit{outputs} de cada uma das partes do sistema e como elas se comunicam entre si. 
+
+Pode ser usada a câmera de um telefone mesmo, por exemplo, para validar a visão computacional nessa etapa, e observar como isso seria usado para partes diferentes da missão, além de como as informações são passadas para o código de controle do drone, código de controle para o qual devem definir quais bibliotecas, SDKs, APIs ou afins serão usadas na interação com o controle de baixo nível do drone.
+
+\subsubsection*{Etapa 3 – Simulação no Gazebo e entrega da missão funcional}
+
+Nessa última etapa prática a ideia é finalizar os códigos para a implementação da missão, assim como garantir o funcionamento das integrações como um todo para, aí sim, ter um conjunto funcional possível de ser testado num ambiente de simulação. O Gazebo é um simulador de robôs que permite testar o drone em um ambiente virtual com alta compatibilidade com o ambiente físico real de uma missão, então uma validação lá é essencial enquanto último passo antes da execução da missão no mundo real. 
+
+
+\subsubsection*{Relatório}
+
+Tanto durante o desenvolvimento das etapas, quanto ao final dos testes, é essencial registrar cada pesquisa, escolha e resultado de forma clara e objetiva. O relatório final deve compilar todas as etapas anteriores e esclarecer os pontos da lista a seguir:
+
+\textbf{O que documentar:}
+\begin{itemize}
+    \item Lista das tecnologias e estratégias pesquisadas: nome, aplicações comuns, funcionalidades que implementam, princípio teórico de funcionamento, vantagens e desvantagens, possíveis integrações e alternativas.
+    \item Escolhas e suas justificativas: Em sequência aos assuntos documentados no requisito do tópico anterior devem ser listadas as tecnologias e estratégias escolhidas para a implementação da missão, assim como as justificativas para cada uma delas e o método com que foi feita a escolha.
+    \item Diagrama de blocos: Diagrama que represente a solução como um todo, com as partes separadas e como elas se conectam entre si. Esse diagrama é uma forma interessante de comunicarem como integraram as diferentes partes da solução.
+    \item Testes e resultados: Explicações de como foram feitos os testes, quais foram os resultados, como se relacionaram às espectativas iniciais, como foram usados para validar as escolhas feitas e se algum teste motivou, em algum momento, a mudança de alguma escolha feita anteriormente (isso pode e deve ser feito se for o caso).
+    \item Dificuldades e soluções: problemas enfrentados na pesquisa, execução ou testes, como foram resolvidos ou se não foram resolvidos como foram contornados, e o que pode ser feito para evitar esses problemas no futuro.
+    \item Conclusões: O que foi aprendido com o projeto, como isso pode ser aplicado no futuro e como isso se relaciona com a área de C\&SE.
+\end{itemize}
+
+
+
+\textbf{Recomendações:}
+\begin{itemize}
+    \item Será disponibilizado um manual com fundamentos teóricos e indicações da documentação de várias das tecnologias que são boas opções para implementar a missão, esse documento é um bom ponto de partida para a leitura.
+    \item Tenham e documentem objetivos concretos e metas de vocês para cada uma das etapas, mostrar como isso foi organizado e onde foram possíveis falhas e pontos de trava será tanto importante para a estratégia e aprendizado de vocês, quanto para esclarecimentos relevantes para a avaliação que será feita do trabalho.
+\end{itemize}
