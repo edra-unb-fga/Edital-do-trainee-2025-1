@@ -4,7 +4,7 @@
 Nesse documento constam informações específicas sobre elementos da missão com os quais o drone terá que interagir. O objetivo é fornecer as especificações necessárias para a reprodução do ambiente da missão e, por consequência, para a simulação e testes da solução desenvolvida.
 
 ### Características do ambiente
-O espaço que limita o ambiente da missão é quadrado e tem 20 metros por 20 metros, nesse espaço existe uma linha azul no chão, um QR Code e três bases que representam os pontos de entrega. O ambiente é plano com chão de grama baixa (não representa obstruções) e sem obstáculos, o chão oferece textura visual mas não possui referências adicionais além dos elementos citados.
+O espaço que limita o ambiente da missão é quadrado e tem 30 metros por 30 metros de lado e um limite de 10 metros de altura, nesse espaço existe uma linha azul no chão, um QR Code e três bases que representam os pontos de entrega. O ambiente é plano com chão de grama baixa (não representa obstruções) e sem obstáculos, o chão oferece textura visual mas não possui referências adicionais além dos elementos citados.
 
 ### Linha para seguir
 A linha a ser seguida pelo drone é uma linha azul, com largura de 20 cm, ela poderá fazer curvas, mas não poderá ter ângulos retos nem fará loops sobre si mesma. A linha não terá menos que 5 metros de comprimento nem e mais que 15.
